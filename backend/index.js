@@ -42,12 +42,15 @@ app.put('/completed', async function(req, res){
         return;
     }
 
-    await todo.update({
+     const updatedTodo =  await todo.update({
     _id: req.body.id
-    },{
-        completed: true
-    })
+},{
+    completed: true
+})
     res.json({
+        updatedTodo,
         msg: "Todo marked as completed"
     })
 });
+
+app.listen(3000);
